@@ -13,6 +13,8 @@ import {ProductDetailComponent} from './product-detail/product-detail.component'
 import {HomeComponent} from './home/home.component';
 import {RouterModule, Routes} from '@angular/router';
 import {ProductService} from './shared/product.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FilterPipe} from './pipe/filter.pipe';
 
 const routeConfig: Routes = [
   {path: '', component: HomeComponent},
@@ -29,14 +31,19 @@ const routeConfig: Routes = [
     ProductComponent,
     StatsComponent,
     ProductDetailComponent,
-    HomeComponent
+    HomeComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routeConfig)
+    RouterModule.forRoot(routeConfig),
+    // 响应式编程
+    ReactiveFormsModule,
+    // 下面这个 angular6没有默认加入需要注意
+    FormsModule
   ],
-  providers: [ ProductService],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
